@@ -149,6 +149,6 @@ export default App;
 ### Support
 
 Feel free to create issues and pull requests. I will try to provide as much support as possible over GitHub. In case of questions or problems, contact me at:
-[tony@venits.com](tony@venits.com)
+[nphuongnam8@gmail.com](nphuongnam8@gmail.com)
 
 ### Happy Coding 💖🚀
