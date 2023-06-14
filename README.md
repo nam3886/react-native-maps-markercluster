@@ -19,16 +19,23 @@ This repo is proudly sponsored by:
 
 ## Installation
 
-```js
+```ts
 npm install react-native-maps-markercluster react-native-maps --save
-// yarn add react-native-maps-markercluster react-native-maps
+```
+or
+```ts
+yarn add react-native-maps-markercluster react-native-maps
 ```
 
 ### Full example
 
-```js
+```ts
 import React from "react";
-import MapView from "react-native-maps-markercluster";
+import {
+  MapView,
+  MapViewRef,
+  MarkerCluster,
+} from "react-native-maps-markercluster";
 import { Marker } from "react-native-maps";
 
 const INITIAL_REGION = {
@@ -38,19 +45,29 @@ const INITIAL_REGION = {
   longitudeDelta: 8.5,
 };
 
-const App = () => (
-  <MapView initialRegion={INITIAL_REGION} style={{ flex: 1 }}>
-    <Marker coordinate={{ latitude: 52.4, longitude: 18.7 }} />
-    <Marker coordinate={{ latitude: 52.1, longitude: 18.4 }} />
-    <Marker coordinate={{ latitude: 52.6, longitude: 18.3 }} />
-    <Marker coordinate={{ latitude: 51.6, longitude: 18.0 }} />
-    <Marker coordinate={{ latitude: 53.1, longitude: 18.8 }} />
-    <Marker coordinate={{ latitude: 52.9, longitude: 19.4 }} />
-    <Marker coordinate={{ latitude: 52.2, longitude: 21 }} />
-    <Marker coordinate={{ latitude: 52.4, longitude: 21 }} />
-    <Marker coordinate={{ latitude: 51.8, longitude: 20 }} />
-  </MapView>
-);
+const App = () => {
+  const mapRef = useRef<MapViewRef>();
+
+  return (
+    <MapView
+      mapRef={(ref) => (mapRef.current = ref)}
+      initialRegion={INITIAL_REGION}
+      style={{ flex: 1 }}
+    >
+      <MarkerCluster>
+        <Marker coordinate={{ latitude: 52.4, longitude: 18.7 }} />
+        <Marker coordinate={{ latitude: 52.1, longitude: 18.4 }} />
+        <Marker coordinate={{ latitude: 52.6, longitude: 18.3 }} />
+        <Marker coordinate={{ latitude: 51.6, longitude: 18.0 }} />
+        <Marker coordinate={{ latitude: 53.1, longitude: 18.8 }} />
+        <Marker coordinate={{ latitude: 52.9, longitude: 19.4 }} />
+        <Marker coordinate={{ latitude: 52.2, longitude: 21 }} />
+        <Marker coordinate={{ latitude: 52.4, longitude: 21 }} />
+        <Marker coordinate={{ latitude: 51.8, longitude: 20 }} />
+      </MarkerCluster>
+    </MapView>
+  );
+};
 
 export default App;
 ```
@@ -87,7 +104,7 @@ export default App;
 
 Full example of how to use `animateToRegion()`.
 
-```js
+```ts
 import React, { useRef } from "react";
 import { Button } from "react-native";
 import MapView from "react-native-maps-markercluster";
