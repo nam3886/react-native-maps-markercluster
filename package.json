@@ -1,8 +1,9 @@
 {
   "name": "react-native-maps-markercluster",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React Native Map Clustering both for Android and iOS",
   "main": "index.ts",
+  "private": false,
   "scripts": {
     "test": "jest"
   },
@@ -19,7 +20,7 @@
     "map",
     "clustering"
   ],
-  "author": "Venits",
+  "author": "nam3886",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nam3886/react-native-maps-markercluster/issues"
