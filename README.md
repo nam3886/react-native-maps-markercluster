@@ -15,7 +15,7 @@ This repo is proudly sponsored by:
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/venits/react-native-maps-markercluster/assets/assets/demo.gif)
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/xdbJANg"  ><a href="//imgur.com/a/xdbJANg">react-native-maps-markercluster</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 ## Installation
 
