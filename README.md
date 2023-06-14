@@ -1,5 +1,7 @@
 ﻿# React Native Map Clustering
 
+Fork from <a href="https://github.com/venits/react-native-map-clustering" target="_blank">react-native-map-clustering</a>
+
 React Native module that handles map clustering for you.
 
 Works with **Expo** and **react-native-cli** 🚀
@@ -13,20 +15,20 @@ This repo is proudly sponsored by:
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/venits/react-native-map-clustering/assets/assets/demo.gif)
+![Demo](https://raw.githubusercontent.com/venits/react-native-maps-markercluster/assets/assets/demo.gif)
 
 ## Installation
 
 ```js
-npm install react-native-map-clustering react-native-maps --save
-// yarn add react-native-map-clustering react-native-maps
+npm install react-native-maps-markercluster react-native-maps --save
+// yarn add react-native-maps-markercluster react-native-maps
 ```
 
 ### Full example
 
 ```js
 import React from "react";
-import MapView from "react-native-map-clustering";
+import MapView from "react-native-maps-markercluster";
 import { Marker } from "react-native-maps";
 
 const INITIAL_REGION = {
@@ -56,7 +58,7 @@ export default App;
 ## Props
 
 | Name                                        | Type                  | Default                                      | Note                                                                                                                                                                                                                            |
-| ------------------------------------------- | --------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ------------------------------------------- | --------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | **clusterColor**                            | String                | #00B386                                      | Background color of cluster.                                                                                                                                                                                                    |
 | **clusterTextColor**                        | String                | #FFFFFF                                      | Color of text in cluster.                                                                                                                                                                                                       |
 | **clusterFontFamily**                       | String                | undefined                                    | Font family of text in cluster.                                                                                                                                                                                                 |
@@ -88,7 +90,7 @@ Full example of how to use `animateToRegion()`.
 ```js
 import React, { useRef } from "react";
 import { Button } from "react-native";
-import MapView from "react-native-map-clustering";
+import MapView from "react-native-maps-markercluster";
 import { Marker } from "react-native-maps";
 
 const INITIAL_REGION = {

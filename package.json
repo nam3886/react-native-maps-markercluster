@@ -1,6 +1,6 @@
 {
-  "name": "react-native-map-clustering",
-  "version": "0.0.1",
+  "name": "react-native-maps-markercluster",
+  "version": "0.0.2",
   "description": "React Native Map Clustering both for Android and iOS",
   "main": "index.ts",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/venits/react-native-map-clustering.git"
+    "url": "git+https://github.com/nam3886/react-native-maps-markercluster.git"
   },
   "keywords": [
     "react-native",
@@ -22,9 +22,9 @@
   "author": "Venits",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/venits/react-native-map-clustering/issues"
+    "url": "https://github.com/nam3886/react-native-maps-markercluster/issues"
   },
-  "homepage": "https://github.com/venits/react-native-map-clustering#readme",
+  "homepage": "https://github.com/nam3886/react-native-maps-markercluster#readme",
   "dependencies": {
     "@mapbox/geo-viewport": "^0.5.0",
     "supercluster": "^8.0.1"

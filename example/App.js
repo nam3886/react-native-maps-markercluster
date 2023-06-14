@@ -1,5 +1,5 @@
 import React from "react";
-import MapView from "react-native-map-clustering";
+import MapView from "react-native-maps-markercluster";
 import { Marker } from "react-native-maps";
 
 function getRandomLatitude(min = 48, max = 56) {
