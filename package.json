@@ -1,8 +1,25 @@
 {
   "name": "react-native-maps-markercluster",
-  "version": "1.0.0",
-  "description": "",
-  "homepage": "RNMapsMarkerCluster",
+  "version": "0.1.1",
+  "description": "React Native Map Clustering both for Android and iOS",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nam3886/react-native-maps-markercluster.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nam3886/react-native-maps-markercluster/issues"
+  },
+  "homepage": "https://github.com/nam3886/react-native-maps-markercluster#readme",
+  "keywords": [
+    "react-native",
+    "react",
+    "cluster",
+    "android",
+    "iOS",
+    "map",
+    "clustering"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "nam3886 <nphuongnam8@gmail.com>",
