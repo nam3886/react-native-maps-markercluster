@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Button, NativeModules, StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 
 export const addOne = (input: number) => input + 1
 
@@ -22,5 +22,3 @@ const styles = StyleSheet.create({
     height: 200,
   },
 })
-
-export default NativeModules.RNModuleTemplateModule

@@ -1,30 +1,14 @@
 {
-  "name": "react-native-module-template",
-  "version": "2.5.1",
-  "description": "A starter for the React Native library written in TypeScript, with linked example project and optional native code in Swift and Kotlin.",
-  "homepage": "https://github.com/demchenkoalex/react-native-module-template#readme",
+  "name": "react-native-maps-markercluster",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "RNMapsMarkerCluster",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "author": "Alex Demchenko <alexdemchenko@yahoo.com>",
+  "author": "nam3886 <nphuongnam8@gmail.com>",
   "license": "MIT",
   "files": [
-    "android",
-    "ios",
-    "lib",
-    "react-native-module-template.podspec",
-    "!android/build",
-    "!.DS_Store",
-    "!.gradle",
-    "!.idea",
-    "!build",
-    "!gradle",
-    "!*.iml",
-    "!gradlew",
-    "!gradlew.bat",
-    "!local.properties",
-    "!project.xcworkspace",
-    "!xcshareddata",
-    "!xcuserdata"
+    "lib"
   ],
   "scripts": {
     "compile": "rm -rf lib && tsc -p .",
@@ -37,8 +21,13 @@
     "@babel/runtime": "^7.16.7",
     "@react-native-community/eslint-config": "^3.0.1",
     "@types/jest": "^27.4.0",
-    "@types/react-native": "^0.66.15",
+    "@types/mapbox__geo-viewport": "^0.4.1",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@types/react-native": "^0.72.2",
+    "@types/react-native-maps": "^0.24.2",
     "@types/react-test-renderer": "^17.0.1",
+    "@types/supercluster": "^7.1.0",
     "babel-jest": "^27.4.6",
     "eslint": "^7.32.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
@@ -51,7 +40,12 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "typescript": "*"
+  },
+  "resolutions": {
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6"
   },
   "jest": {
     "preset": "react-native",
@@ -63,5 +57,9 @@
       "json",
       "node"
     ]
+  },
+  "dependencies": {
+    "@mapbox/geo-viewport": "^0.5.0",
+    "supercluster": "^8.0.1"
   }
 }

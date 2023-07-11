@@ -1,142 +1,154 @@
-# React Native Module Template
+# React Native Map Clustering
 
-A starter for the React Native library written in TypeScript, with linked example project and optional native code written in Swift and Kotlin. This project aims to support the latest React Native versions and keep best practices in mind.
+Fork from <a href="https://github.com/venits/react-native-map-clustering" target="_blank">react-native-map-clustering</a>
 
-Are you looking for the project template? Check [react-native-better-template](https://github.com/demchenkoalex/react-native-better-template).
+React Native module that handles map clustering for you.
 
-## Alternatives
+Works with **Expo** and **react-native-cli** 🚀
 
-[react-native-builder-bob](https://github.com/callstack/react-native-builder-bob)
+This repo is proudly sponsored by:
 
-[create-react-native-module](https://github.com/brodybits/create-react-native-module)
+<a href="https://reactnativemarket.com/" rel="nofollow" target="_blank">
+  <img src="https://raw.githubusercontent.com/venits/react-native-market/master/assets/banner.png" width="280"><br />
+  React Native Templates & Starter Kits and Apps for easier start.
+</a>
 
-### Why this template?
+## Demo
 
-First of all, it has TypeScript set up and ready. Also, if you will use a native code, this template uses Swift and Kotlin, which is much better than Objective-C and Java.
+![Demo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTQ1ZGE1M2YxOTFjYjM3ZGZmNDQ2OGY3MWE4OWY1ZDhhMDNiYzM5NyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/oMB8CsXvoACos9b6wu/giphy.gif)
 
-The example project is linked in a way so that you can work on your library and see the results of your work immediately. If you use native code you can see linked libraries in the example project opened in Xcode or Android Studio and can modify the code directly from there, just remember to rebuild the example to see the changes. When you change TypeScript code you need to compile it first (using `yarn` command, it has `prepare` hook set up) since with npm you are supplying `lib` folder with JavaScript and type definitions, but there is an [option](#how-to-see-my-changes-immediately-in-the-example) to point example to the `src` folder instead, so that when you modify your library you see changes immediately in the example thanks to [Fast Refresh](https://facebook.github.io/react-native/docs/fast-refresh).
+## Installation
 
-## Usage
-
-Clone this repo, rename the `react-native-module-template` folder to your library name, navigate to that folder and run
-
+```ts
+npm install react-native-maps-markercluster react-native-maps --save
 ```
-node rename.js
-```
-
-or if you want to **remove native code**
-
-```
-node rename.js js-only
+or
+```ts
+yarn add react-native-maps-markercluster react-native-maps
 ```
 
-This will invoke rename script, which removes all references to the template and makes some cleanup.
+### Full example
 
-⚠️⚠️⚠️ This script is not made to be bulletproof, some assumptions are made:
+```ts
+import React from "react";
+import {
+  MapView,
+  MapViewRef,
+  MarkerCluster,
+} from "react-native-maps-markercluster";
+import { Marker } from "react-native-maps";
 
-- The script will ask for different information (such as library name, author name, author email etc.) and there might be instructions in the parenthesis, please follow them or something will likely **fail**.
-- Use `kebab-case` for the library name, _preferably_ with `react-native` prefix (e.g. `react-native-blue-button`, blue-button, button).
-- Use `PascalCase` for the library short name (in case you will have native code, with `js-only` argument script will not ask for this), it is used in native projects (RNModuleTemplate.xcodeproj, RNModuleTemplatePackage.kt etc.). If you prefixed your library name with `react-native` use prefix `RN` for the short name (e.g. `RNBlueButton`, BlueButton, Button).
-- Library homepage is used only in `package.json`, if you are not sure, you can press enter to skip this step and modify this field later. Library git url is used only in `.podspec` file, same as above (note that this file will be removed if you pass `js-only` argument).
-- Please don't use any special characters in author name since it is a part of Android package name, (e.g. `com.alexdemchenko.reactnativemoduletemplate`) and used in Kotlin and other files. Android package name is generated from author name (with removed spaces and lowercased) and library name (with removed dashes).
+const INITIAL_REGION = {
+  latitude: 52.5,
+  longitude: 19.2,
+  latitudeDelta: 8.5,
+  longitudeDelta: 8.5,
+};
 
-Don't forget to remove the rename script, do `yarn` to install dependencies in root and example folders, and, if you kept native code, do `pod install` in `example/ios`.
+const App = () => {
+  const mapRef = useRef<MapViewRef>();
 
-If you didn't use `js-only` you are good to go. If you did, you need to unlink native code from the example
+  return (
+    <MapView
+      mapRef={(ref) => (mapRef.current = ref)}
+      initialRegion={INITIAL_REGION}
+      style={{ flex: 1 }}
+    >
+      <MarkerCluster>
+        <Marker coordinate={{ latitude: 52.4, longitude: 18.7 }} />
+        <Marker coordinate={{ latitude: 52.1, longitude: 18.4 }} />
+        <Marker coordinate={{ latitude: 52.6, longitude: 18.3 }} />
+        <Marker coordinate={{ latitude: 51.6, longitude: 18.0 }} />
+        <Marker coordinate={{ latitude: 53.1, longitude: 18.8 }} />
+        <Marker coordinate={{ latitude: 52.9, longitude: 19.4 }} />
+        <Marker coordinate={{ latitude: 52.2, longitude: 21 }} />
+        <Marker coordinate={{ latitude: 52.4, longitude: 21 }} />
+        <Marker coordinate={{ latitude: 51.8, longitude: 20 }} />
+      </MarkerCluster>
+    </MapView>
+  );
+};
 
-### iOS
-
-Open Xcode, in the project navigator find `Libraries` folder, reveal contents using the small arrow and hit `DELETE` on `RNModuleTemplate.xcodeproj`. Alternatively, open `example/ios/example.xcodeproj/project.pbxproj`, search for the `Template` (there should be a number of `libRNModuleTemplate.a` and `RNModuleTemplate.xcodeproj` files) and remove all references to them. Please remove whole lines if it among files with other names or whole sections if it is the only item. Groups, like `Library` or `Products`, must stay, just remove the template from appropriate children field.
-
-### Android
-
-In `example/android/settings.gradle` remove
-
-```gradle
-include ':react-native-module-template'
-project(':react-native-module-template').projectDir = new File(rootProject.projectDir, '../../android')
+export default App;
 ```
 
-In `example/android/app/build.gradle` remove
+## Props
 
-```gradle
-implementation project(':react-native-module-template')
+| Name                                        | Type                  | Default                                      | Note                                                                                                                                                                                                                            |
+| ------------------------------------------- | --------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **clusterColor**                            | String                | #00B386                                      | Background color of cluster.                                                                                                                                                                                                    |
+| **clusterTextColor**                        | String                | #FFFFFF                                      | Color of text in cluster.                                                                                                                                                                                                       |
+| **clusterFontFamily**                       | String                | undefined                                    | Font family of text in cluster.                                                                                                                                                                                                 |
+| **onClusterPress(cluster, markers)**        | Function              | () => {}                                     | Allows you to control cluster on click event. Function returns information about cluster and its markers.                                                                                                                       |
+| **tracksViewChanges**                       | Bool                  | false                                        | Sets whether the cluster markers should track view changes. It's turned off by default to improve cluster markers performance.                                                                                                  |
+| **width**                                   | Number                | window width                                 | map's width.                                                                                                                                                                                                                    |
+| **height**                                  | Number                | window height                                | map's height.                                                                                                                                                                                                                   |
+| **radius**                                  | Number                | window.width \* 6%                           | [SuperCluster radius](https://github.com/mapbox/supercluster#options).                                                                                                                                                          |
+| **extent**                                  | Number                | 512                                          | [SuperCluster extent](https://github.com/mapbox/supercluster#options).                                                                                                                                                          |
+| **minZoom**                                 | Number                | 1                                            | [SuperCluster minZoom](https://github.com/mapbox/supercluster#options).                                                                                                                                                         |
+| **maxZoom**                                 | Number                | 20                                           | [SuperCluster maxZoom](https://github.com/mapbox/supercluster#options).                                                                                                                                                         |
+| **minPoints**                               | Number                | 2                                            | [SuperCluster minPoints](https://github.com/mapbox/supercluster#options).                                                                                                                                                       |
+| **preserveClusterPressBehavior**            | Bool                  | false                                        | If set to true, after clicking on cluster it will not be zoomed.                                                                                                                                                                |
+| **edgePadding**                             | Object                | { top: 50, left: 50, bottom: 50, right: 50 } | Edge padding for [react-native-maps's](https://github.com/react-community/react-native-maps/blob/master/docs/mapview.md#methods) `fitToCoordinates` method, called in `onClusterPress` for fitting to pressed cluster children. |
+| **animationEnabled**                        | Bool                  | true                                         | Animate imploding/exploding of clusters' markers and clusters size change. **Works only on iOS**.                                                                                                                               |
+| **layoutAnimationConf**                     | LayoutAnimationConfig | LayoutAnimation.Presets.spring               | `LayoutAnimation.Presets.spring`                                                                                                                                                                                                | Custom Layout animation configuration object for clusters animation during implode / explode **Works only on iOS**. |
+| **onRegionChangeComplete(region, markers)** | Function              | () => {}                                     | Called when map's region changes. In return you get current region and markers data.                                                                                                                                            |
+| **onMarkersChange(markers)**                | Function              | () => {}                                     | Called when markers change. In return you get markers data.                                                                                                                                                                     |
+| **superClusterRef**                         | MutableRefObject      | {}                                           | Return reference to `supercluster` library. You can read more about options it has [here.](https://github.com/mapbox/supercluster)                                                                                              |
+| **clusteringEnabled**                       | Bool                  | true                                         | Set true to enable and false to disable clustering.                                                                                                                                                                             |
+| **spiralEnabled**                           | Bool                  | true                                         | Set true to enable and false to disable spiral view.                                                                                                                                                                            |
+| **renderCluster**                           | Function              | undefined                                    | Enables you to render custom cluster with custom styles and logic.                                                                                                                                                              |
+| **spiderLineColor**                         | String                | #FF0000                                      | Enables you to set color of spider line which joins spiral location with center location.                                                                                                                                       |
+
+## How to animate to region?
+
+Full example of how to use `animateToRegion()`.
+
+```ts
+import React, { useRef } from "react";
+import { Button } from "react-native";
+import MapView from "react-native-maps-markercluster";
+import { Marker } from "react-native-maps";
+
+const INITIAL_REGION = {
+  latitude: 52.5,
+  longitude: 19.2,
+  latitudeDelta: 8.5,
+  longitudeDelta: 8.5,
+};
+
+const App = () => {
+  const mapRef = useRef();
+
+  const animateToRegion = () => {
+    let region = {
+      latitude: 42.5,
+      longitude: 15.2,
+      latitudeDelta: 7.5,
+      longitudeDelta: 7.5,
+    };
+
+    mapRef.current.animateToRegion(region, 2000);
+  };
+
+  return (
+    <>
+      <MapView
+        ref={mapRef}
+        initialRegion={INITIAL_REGION}
+        style={{ flex: 1 }}
+      />
+      <Button onPress={animateToRegion} title="Animate" />
+    </>
+  );
+};
+
+export default App;
 ```
 
-In `example/android/app/src/main/java/com/example/MainApplication.kt` remove
+### Support
 
-```kotlin
-import com.alexdemchenko.reactnativemoduletemplate.RNModuleTemplatePackage
+Feel free to create issues and pull requests. I will try to provide as much support as possible over GitHub. In case of questions or problems, contact me at:
+[nphuongnam8@gmail.com](nphuongnam8@gmail.com)
 
-packages.add(RNModuleTemplatePackage())
-```
-
-## How example project is linked
-
-The native part is manually linked (you can see changes for Android right above), for iOS check [official docs](https://facebook.github.io/react-native/docs/linking-libraries-ios#manual-linking), but **Header Search Paths** are pointing to the `ios` folder, `$(SRCROOT)/../../ios`, not node_modules.
-
-JavaScript part is using Metro Bundler configuration, see [this article](https://callstack.com/blog/adding-an-example-app-to-your-react-native-library/) for more details and final configuration [here](example/metro.config.js).
-
-In the example's [tsconfig.json](example/tsconfig.json) custom path is specified, so you can import your code the same way end user will do.
-
-```json
-"paths": {
-  "react-native-module-template": ["../src"]
-},
-```
-
-### How to see my changes immediately in the example
-
-In the library's `package.json` change
-
-```json
-"main": "lib/index.js",
-```
-
-to
-
-```json
-"main": "src/index.tsx", // or `index.ts` if you don't have JSX there
-```
-
-restart the bundler if you have it running
-
-```
-yarn start
-```
-
-⚠️⚠️⚠️ Don't forget to change this back before making a release, since with npm you supply `lib` folder, not `src`. Let me know if there is a way to do this automatically.
-
-## Release
-
-Create an npm account [here](https://www.npmjs.com/signup) if you don't have one. Then do
-
-```
-npm login
-```
-
-and
-
-```
-npm publish
-```
-
-ℹ️ If you want to see what files will be included in your package before release run `npm pack`
-
-ℹ️ If you have native code in your library most of the time you will need `.kt`, `.h`/`.m`, `.swift` files, `project.pbxproj`, `AndroidManifest.xml` and `build.gradle` aside from TypeScript code and default stuff, so keep an eye on what you are publishing, some configuration/build folders or files might sneak in. Most of them (if not all) are ignored in [package.json](package.json).
-
-## FAQ
-
-### VSCode ESLint plugin does not lint example project
-
-By default, ESLint is configured separately for the library's source code and the example. It uses two `.eslintignore` files, the first one for the library, among others it ignores `/example` folder, and the second one for the example project. Since `/example` folder is ignored in one of these files, the plugin does not lint anything in it, see this [issue](https://github.com/microsoft/vscode-eslint/issues/111). To fix that, go to the VSCode settings and set
-
-```json
-"eslint.workingDirectories": [
-	"./example"
-]
-```
-
-## License
-
-[MIT](LICENSE)
+### Happy Coding 💖🚀
