@@ -47,6 +47,8 @@ export const MapView: React.FC<Props> = (props) => {
       <RNMapView
         {...rest}
         ref={mapRef as any}
+        region={region}
+        initialRegion={initialRegion}
         onRegionChangeComplete={handleOnRegionChangeComplete}
       >
         {children}
