@@ -2,19 +2,19 @@ import React from 'react'
 import { Dimensions, LayoutAnimation, Platform } from 'react-native'
 import Supercluster from 'supercluster'
 
+import { useMapView } from '../MapView'
 import {
   calculateBBox,
   isMarker,
   markerToGeoJSONFeature,
   returnMapZoom,
 } from '../MapView/helpers'
-import { useMapViewContext } from '../MapView/useMapViewContext'
 import { MarkerClusterType } from '../types'
 import { MarkerClusterItem } from './MarkerClusterItem'
 
 export const MarkerCluster: React.FC<MarkerClusterType.WrapperProps> =
   React.memo((props) => {
-    const { region, mapRef } = useMapViewContext()
+    const { region, mapRef } = useMapView()
 
     const [clusters, setClusters] = React.useState<MarkerClusterType.Cluster[]>(
       []
